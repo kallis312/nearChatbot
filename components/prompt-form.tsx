@@ -8,7 +8,11 @@ import { useActions, useUIState } from 'ai/rsc'
 import { UserMessage } from './stocks/message'
 import { type AI } from '@/lib/chat/actions'
 import { Button } from '@/components/ui/button'
-import { IconArrowElbow, IconPlus, IconChevronUpDown } from '@/components/ui/icons'
+import {
+  IconArrowElbow,
+  IconPlus,
+  IconChevronUpDown
+} from '@/components/ui/icons'
 import {
   Tooltip,
   TooltipContent,
@@ -72,7 +76,7 @@ export function PromptForm({
             <Button
               variant="outline"
               size="icon"
-              className="absolute left-0 top-[14px] size-8 rounded-full bg-background p-0 sm:left-4"
+              className="absolute left-0 top-[14px] size-8 rounded-full bg-background p-0 ms-7 sm:left-4"
               onClick={() => {
                 router.push('/new')
               }}
