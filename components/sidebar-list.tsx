@@ -14,7 +14,7 @@ const loadChats = cache(async (userId?: string) => {
 })
 
 export async function SidebarList({ userId }: SidebarListProps) {
-  const chats = await loadChats(userId)
+  const chats = await loadChats(userId) || []
 
   return (
     <div className="flex flex-1 flex-col overflow-hidden">
@@ -29,10 +29,16 @@ export async function SidebarList({ userId }: SidebarListProps) {
           </div>
         )}
       </div>
-      <div className="flex items-center justify-between p-4">
-        <ThemeToggle />
-        <ClearHistory clearChats={clearChats} isEnabled={chats?.length > 0} />
+      <div>
+
       </div>
+      <div className='p-4'>
+        <div className='rounded-md border p-4 truncate'>{userId}</div>
+      </div>
+      {/* <div className="flex items-center justify-between p-4">
+        <ThemeToggle /> */}
+      {/* <ClearHistory clearChats={clearChats} isEnabled={chats?.length > 0} /> */}
+      {/* </div> */}
     </div>
   )
 }
