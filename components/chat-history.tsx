@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 import { SidebarList } from '@/components/sidebar-list'
 import { buttonVariants } from '@/components/ui/button'
 import { IconPlus } from '@/components/ui/icons'
+import Image from 'next/image'
 
 interface ChatHistoryProps {
   userId?: string
@@ -14,8 +15,9 @@ interface ChatHistoryProps {
 export async function ChatHistory({ userId }: ChatHistoryProps) {
   return (
     <div className="flex flex-col h-full">
-      <div className="flex items-center justify-between p-4">
-        <h4 className="text-sm font-medium">Chat History</h4>
+      <div className="flex items-center p-4">
+        <Image src='/Mark.png' width={35}  height={35} alt='mark' />
+        <h3 className="text-sm font-medium ps-4">Sender OS</h3>
       </div>
       <div className="mb-2 px-2">
         <Link
