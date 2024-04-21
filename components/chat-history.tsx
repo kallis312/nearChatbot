@@ -15,11 +15,11 @@ interface ChatHistoryProps {
 export async function ChatHistory({ userId }: ChatHistoryProps) {
   return (
     <div className="flex flex-col h-full">
-      <div className="flex items-center p-4">
-        <Image src='/Mark.png' width={35}  height={35} alt='mark' />
-        <h3 className="text-sm font-medium ps-4">Sender OS</h3>
+      <div className="flex items-center p-4 ms-5 pt-6">
+        <Image src="/Mark.png" width={45} height={45} alt="mark" />
+        <h3 className="text-xl font-medium font- ps-4">Sender OS</h3>
       </div>
-      <div className="mb-2 px-2">
+      <div className="mb-2 px-2 pt-3 ms-7">
         <Link
           href="/"
           className={cn(
