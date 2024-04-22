@@ -10,13 +10,14 @@ import remarkMath from 'remark-math'
 import { StreamableValue } from 'ai/rsc'
 import { useStreamableText } from '@/lib/hooks/use-streamable-text'
 import { FaUserCircle } from "react-icons/fa"
+import Image from 'next/image'
 // Different types of message bubbles.
 
 export function UserMessage({ children }: { children: React.ReactNode }) {
   return (
     <div className="group relative flex flex-col items-start md:-ml-12">
-      <div className="flex select-none items-center justify-center rounded-md shadow-sm">
-        <FaUserCircle color='gray' className='size-[24px]'/>
+      <div className="flex select-none items-center justify-center">
+        <FaUserCircle color='gray' className='size-[24px]' />
         <div className='pl-2'>You</div>
       </div>
       <div className="ml-4 mt-2 flex-1 space-y-2 overflow-hidden p-3 bg-[#eeeaff] w-full rounded-md">
@@ -36,11 +37,12 @@ export function BotMessage({
   const text = useStreamableText(content)
 
   return (
-    <div className={cn('group relative flex items-start md:-ml-12', className)}>
-      <div className="flex size-[24px] shrink-0 select-none items-center justify-center rounded-md border bg-primary text-primary-foreground shadow-sm">
-        <IconOpenAI />
+    <div className={cn('group relative flex flex-col items-start md:-ml-12', className)}>
+      <div className="flex select-none items-center justify-center">
+        <Image src={'/Mark.png'} alt='' width={24} height={24} className='size-[24px] rounded-full' />
+        <div className='pl-2'>Sender OS</div>
       </div>
-      <div className="ml-4 flex-1 space-y-2 overflow-hidden px-1">
+      <div className="ml-4 mt-2 flex-1 space-y-2 overflow-hidden p-3 bg-[#eeeaff] w-full rounded-md">
         <MemoizedReactMarkdown
           className="prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0"
           remarkPlugins={[remarkGfm, remarkMath]}
@@ -98,13 +100,14 @@ export function BotCard({
     <div className="group relative flex items-start md:-ml-12">
       <div
         className={cn(
-          'flex size-[24px] shrink-0 select-none items-center justify-center rounded-md border bg-primary text-primary-foreground shadow-sm',
+          'flex select-none items-center justify-center ',
           !showAvatar && 'invisible'
         )}
       >
-        <IconOpenAI />
+        <Image src={'/Mark.png'} alt='' width={24} height={24} className='size-[24px] rounded-full' />
+        <div className='pl-2'>Sender OS</div>
       </div>
-      <div className="ml-4 flex-1 pl-2">{children}</div>
+      <div className="ml-4 mt-2 flex-1 space-y-2 overflow-hidden p-3 bg-[#eeeaff] w-full rounded-md">{children}</div>
     </div>
   )
 }
@@ -124,8 +127,9 @@ export function SystemMessage({ children }: { children: React.ReactNode }) {
 export function SpinnerMessage() {
   return (
     <div className="group relative flex items-start md:-ml-12">
-      <div className="flex size-[24px] shrink-0 select-none items-center justify-center rounded-md border bg-primary text-primary-foreground shadow-sm">
-        <IconOpenAI />
+      <div className="flex select-none items-center justify-center rounded-md ">
+        <Image src={'/Mark.png'} alt='' width={24} height={24} className='size-[24px] rounded-full' />
+        <div className='pl-2'>Sender OS</div>
       </div>
       <div className="ml-4 h-[24px] flex flex-row items-center flex-1 space-y-2 overflow-hidden px-1">
         {spinner}

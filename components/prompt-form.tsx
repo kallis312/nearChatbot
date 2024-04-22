@@ -5,22 +5,18 @@ import Textarea from 'react-textarea-autosize'
 
 import { useActions, useUIState } from 'ai/rsc'
 
-import { UserMessage } from './stocks/message'
-import { type AI } from '@/lib/chat/actions'
 import { Button } from '@/components/ui/button'
-import {
-  IconArrowElbow,
-  IconPlus,
-  IconChevronUpDown
-} from '@/components/ui/icons'
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger
 } from '@/components/ui/tooltip'
+import { type AI } from '@/lib/chat/actions'
 import { useEnterSubmit } from '@/lib/hooks/use-enter-submit'
 import { nanoid } from 'nanoid'
 import { useRouter } from 'next/navigation'
+import { FaAngleUp } from "react-icons/fa6"
+import { UserMessage } from './stocks/message'
 
 export function PromptForm({
   input,
@@ -70,7 +66,7 @@ export function PromptForm({
         setMessages(currentMessages => [...currentMessages, responseMessage])
       }}
     >
-      <div className="relative flex max-h-60 w-full grow flex-col overflow-hidden bg-background pr-8 pl-4 sm:rounded-lg sm:border sm:pr-12 sm:pl-4">
+      <div className="relative flex max-h-60 w-full grow flex-col overflow-hidden bg-background pr-8 pl-4 sm:rounded-2xl sm:border sm:pr-12 sm:pl-4">
         {/* <Tooltip>
           <TooltipTrigger asChild>
             <Button
@@ -105,8 +101,8 @@ export function PromptForm({
         <div className="absolute right-0 top-[13px] sm:right-4">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button type="submit" size="icon" disabled={input === ''}>
-                <IconChevronUpDown />
+              <Button type="submit" size="icon" color='#1c1d33' disabled={input === ''}>
+                <FaAngleUp />
                 <span className="sr-only">Send message</span>
               </Button>
             </TooltipTrigger>

@@ -64,7 +64,7 @@ export function ChatPanel({
         scrollToBottom={scrollToBottom}
       />
 
-      <div className="mx-auto sm:max-w-4xl sm:px-4">
+      <div className="md:ml-32 lg:ml-56 sm:ml-4 pr-8 max-w-4xl">
         {/* <div className="mb-4 grid grid-cols-2 gap-2 px-4 sm:px-0">
           {messages.length === 0 &&
             exampleMessages.map((example, index) => (

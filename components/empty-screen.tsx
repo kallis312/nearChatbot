@@ -21,7 +21,7 @@ const exampleMessages = [
 
 export function EmptyScreen() {
   return (
-    <div className="md:ml-32 sm:ml-4 max-w-4xl px-4">
+    <div className="lg:ml-56 md:32 sm:ml-4 max-w-4xl px-8">
       <div className="flex flex-col gap-2 rounded-lg border bg-background p-8">
         <h1 className="text-lg font-semibold">
           Welcome to Sender OS.
