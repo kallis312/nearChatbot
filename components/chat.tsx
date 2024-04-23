@@ -12,6 +12,8 @@ import { usePathname, useRouter } from 'next/navigation'
 import { Message } from '@/lib/chat/actions'
 import { useScrollAnchor } from '@/lib/hooks/use-scroll-anchor'
 import { toast } from 'sonner'
+import { WalletSelectorContextProvider } from './contexts/WalletSelectorContext'
+import LoginWallet from './login-wallet'
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   initialMessages?: Message[]
@@ -58,28 +60,31 @@ export function Chat({ id, className, session, missingKeys }: ChatProps) {
     useScrollAnchor()
 
   return (
-    <div
-      className="group w-full overflow-auto pl-0 peer-[[data-state=open]]:lg:pl-[250px] peer-[[data-state=open]]:xl:pl-[300px]"
-      ref={scrollRef}
-    >
+    <WalletSelectorContextProvider>
       <div
-        className={cn('pb-[200px] pt-4 md:pt-10', className)}
-        ref={messagesRef}
+        className="group w-full overflow-auto pl-0 peer-[[data-state=open]]:lg:pl-[250px] peer-[[data-state=open]]:xl:pl-[300px]"
+        ref={scrollRef}
       >
-        {messages.length ? (
-          <ChatList messages={messages} isShared={false} session={session} />
-        ) : (
-          <EmptyScreen />
-        )}
-        <div className="h-px w-full" ref={visibilityRef} />
+        <div
+          className={cn('pb-[200px] pt-4 md:pt-10', className)}
+          ref={messagesRef}
+        >
+          <LoginWallet />
+          {messages.length ? (
+            <ChatList messages={messages} isShared={false} session={session} />
+          ) : (
+            <EmptyScreen />
+          )}
+          <div className="h-px w-full" ref={visibilityRef} />
+        </div>
+        <ChatPanel
+          id={id}
+          input={input}
+          setInput={setInput}
+          isAtBottom={isAtBottom}
+          scrollToBottom={scrollToBottom}
+        />
       </div>
-      <ChatPanel
-        id={id}
-        input={input}
-        setInput={setInput}
-        isAtBottom={isAtBottom}
-        scrollToBottom={scrollToBottom}
-      />
-    </div>
+    </WalletSelectorContextProvider>
   )
 }
